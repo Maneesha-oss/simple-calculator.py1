@@ -1,0 +1,57 @@
+# Define functions for arithmetic operations
+# It takes two integers  that is x ,y as input and returns output 
+
+def add(x, y):
+    """Function to add two numbers"""
+    return x + y
+
+def subtract(x, y):
+    """Function to subtract two numbers"""
+    return x - y
+
+def multiply(x, y):
+    """Function to multiply two numbers"""
+    return x * y
+
+def divide (x, y):
+    """Function to divide two numbers"""
+    try:
+        return x / y
+    except ZeroDivisionError:
+        return "Error! Division by zero."
+
+# Dictionary mapping operation symbols to their respective functions
+operations = {
+    '+': add,
+    '-': subtract,
+    '*': multiply,
+    '/': divide
+}
+
+print("Select operation:")
+print (" + for Addition")
+print (" - for Subtraction")
+print (" * for Multiplication")
+print (" / for Division")
+
+while True:
+    # Take input from the user
+    choice = input("Enter choice (+/-/*/ /): ")
+
+    # Check if choice is one of the operation symbols
+    if choice in operations:
+        try:
+            num1 = float (input("Enter first number: "))
+            num2 = float (input("Enter second number: "))
+            result = operations[choice](num1, num2)
+            print (f"Result: {result}")
+        except ValueError:
+            print("Invalid input! Please enter valid numbers.")
+    else:
+        print ("Invalid operation!")
+
+    # Ask user if they want to perform another calculation
+    another_calculation = input("Do you want to perform another calculation? (yes/no): ")
+    if another_calculation.lower() != 'yes':
+        break
+
